@@ -1,8 +1,8 @@
-Box.Application.addService('ptMapsConfig', function(application) {
+Box.Application.addService('mapsConfig', function(application) {
 
     'use strict';
 
-    var ptMapsConfig = {
+    var mapsConfig = {
         state:{
           zoom : 3,
           center: {
@@ -79,6 +79,6 @@ Box.Application.addService('ptMapsConfig', function(application) {
         }
     }
     
-    return ptMapsConfig;
+    return mapsConfig;
 
 });
