@@ -1,3 +1,13 @@
+/**
+   * Name: mapFactory
+   * Description: Maps API
+   * @author: [Shakib Mohd]
+   * Date: Oct 05, 2015
+**/
+
+/** globals: google */
+
+
 Box.Application.addService('mapFactory', function(application) {
 	'use strict';
 
@@ -72,6 +82,34 @@ Box.Application.addService('mapFactory', function(application) {
         } else {
             window.googleCallback = undefined;
             callback();
+        }
+    };
+
+    // =========================================
+    // Map Bindings
+    // =========================================
+    factory.bind = {
+        zoom: function(map, callback) {
+            google.maps.event.addListener(map, 'zoom_changed', function() {
+                callback(map.getZoom());
+            });
+        },
+        center: function(map, callback) {
+            google.maps.event.addListener(map, 'center_changed', function() {
+                var c = map.getCenter(),
+                    center = {
+                        lat: c.lat(),
+                        lng: c.lng()
+                    };
+                callback(center);
+            });
+        },
+        filter: function(filter, callback) {
+            filter.addListener('state_changed', function() {
+                var position = filter.get('position'),
+                    distance = filter.get('distance');
+                callback(position.lat(), position.lng(), distance);
+            });
         }
     };
 
