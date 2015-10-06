@@ -10,16 +10,16 @@
 Box.Application.addModule('ptMapsModule', function(context) {
 
 
-	var callbackOnWindowLoad, ptMapsModule, mapsConfig, mapFactory, map;
+	var ptMapsModule, mapsConfig, mapFactory, map;
     var mapModuleId = "pt-map";
         
-    callbackOnWindowLoad = function(callback) {
+    /*var callbackOnWindowLoad = function(callback) {
         if(document.readyState === 'complete') {
             callback();
         } else {
             window[addEventListener?'addEventListener':'attachEvent'](addEventListener?'load':'onload', callback);
         }
-    }
+    }*/
 
     var addModuleContainer = function(ptMapsModule){
         if($(ptMapsModule).children('.mod-content')){
