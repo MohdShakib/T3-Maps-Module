@@ -6,6 +6,7 @@
 <body>
         <div data-module="ptMapsModule">
         </div>
+        <div data-module="ptZoomMapModule"></div>
 
         <script src="js/libs/doT.min.js"></script>
         <script src="js/libs/jquery-1.11.3.min.js"></script>
@@ -14,10 +15,13 @@
         <script src="js/services/mapFactory.js"></script>
         <script src="js/ptMapsBehavior.js"></script>
         <script src="js/ptMapsModule.js"></script>
+        <script src="js/ptZoomMapModule.js"></script>
         <script type="text/javascript">
-          Box.Application.init({
-            debug: true
-          });
+        window.onload = function() {
+            Box.Application.init({
+              debug: true
+            });
+        } 
         </script>
-</body> 
+</body>
 </html>

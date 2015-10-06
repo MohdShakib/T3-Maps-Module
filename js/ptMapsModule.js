@@ -12,7 +12,7 @@ Box.Application.addModule('ptMapsModule', function(context) {
 
 	var callbackOnWindowLoad, ptMapsModule, mapsConfig, mapFactory, map;
     var mapModuleId = "pt-map";
-        
+
     callbackOnWindowLoad = function(callback) {
         if(document.readyState === 'complete') {
             callback();
@@ -27,15 +27,26 @@ Box.Application.addModule('ptMapsModule', function(context) {
         }
         var htmlContent =  '<div class="mod-content"><div id="'+mapModuleId+'" style="width:98%; height:98%; position:absolute;"></div></div>';
         $(ptMapsModule).append(htmlContent);
-    }
+    };
 
     var proceed = function(){
         var elementId   =  mapModuleId;
         map = mapFactory.initialize(mapsConfig, elementId);
-    }
+    };
+
+	/**
+	* Description of method.
+	* @param {type} name Description
+    * @returns {type} Description
+    */
+	var onmessage = function(name, data) {
+
+	};
 
     return {
         behaviors: ['ptMapsBehavior'],
+		messages: ['mapZoomin'],
+
         init: function() {
             // capture the reference when the module is started
             ptMapsModule = context.getElement();

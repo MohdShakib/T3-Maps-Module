@@ -2,13 +2,15 @@ Box.Application.addService('mapsConfig', function(application) {
 
     'use strict';
 
+    var ZERO_MILE = {
+        lat: 21.149806,
+        lng: 79.080617
+    };
+
     var mapsConfig = {
         state:{
           zoom : 3,
-          center: {
-            lat: 21.0000,
-            lng: 78.0000
-          },
+          center: ZERO_MILE,
           minZoom : 9,
           maxZoom : 22,
           filter: {
@@ -20,10 +22,7 @@ Box.Application.addService('mapsConfig', function(application) {
                 maxDistance: 7,
                 maxStoredDistance: 3,
                 lastDistance: 2,
-                position: {
-                    lat: 21.0000,
-                    lng: 78.0000
-                }
+                position: ZERO_MILE
             }
           },
           polygonFilter: {
@@ -36,10 +35,7 @@ Box.Application.addService('mapsConfig', function(application) {
                 distance: 3,
                 minDistance: 3,
                 maxDistance: 7,
-                position: {
-                    lat: 21.0000,
-                    lng: 78.0000
-                }
+                position: ZERO_MILE
             }
           },
           libraries : {},
@@ -78,7 +74,7 @@ Box.Application.addService('mapsConfig', function(application) {
             ]
         }
     }
-    
+
     return mapsConfig;
 
 });
