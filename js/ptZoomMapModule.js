@@ -16,24 +16,26 @@ Box.Application.addModule('ptZoomMapModule', function(context) {
         $(ptZoomMapModule).append(htmlContent);
     };
 
-    var init = function() {
-        ptZoomMapModule = context.getElement();
-        addModuleContainer(ptZoomMapModule);
-    };
-
-    var destroy = function() {
-
-    };
-
     var onclick = function(event, element, elementType) {
         if(elementType === 'zoomin') {
-            
+            context.broadcast('mapZoomin','');
+        }
+        if(elementType === 'zoomout') {
+            context.broadcast('mapZoomout','');
         }
     };
 
     return {
-        init: init,
-        destroy: destroy,
-        onclick: onclick
+        behaviors: [],
+        messages: [],
+
+        init: function() {
+            ptZoomMapModule = context.getElement();
+            addModuleContainer(ptZoomMapModule);
+        },
+        destroy: function() {
+            ptZoomMapModule = null;
+        },
+        onclick: onclick,
     }
 });

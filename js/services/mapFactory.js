@@ -20,9 +20,9 @@ Box.Application.addService('mapFactory', function(application) {
         document.body.appendChild(s);
     }
 
-    // =========================================
-    // Initialize the map
-    // =========================================
+    // ===========================================
+    // Initialize the map and return a reference
+    // ===========================================
 	factory.initialize = function(mapsConfig, elementId){
         var state = mapsConfig.state,
         mapStyles = mapsConfig.styles,
@@ -45,6 +45,7 @@ Box.Application.addService('mapFactory', function(application) {
         };
 
         map = new google.maps.Map(document.getElementById('pt-map'), options);
+		return map;
     }
 
      // =========================================
