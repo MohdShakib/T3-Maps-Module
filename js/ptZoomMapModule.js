@@ -12,7 +12,7 @@ Box.Application.addModule('ptZoomMapModule', function(context) {
     var ptZoomMapModule;
 
     var addModuleContainer = function(ptZoomMapModule) {
-        var htmlContent = '<div style="position: absolute;"><button data-type="zoomin">+</button><button data-type="zoomout">-</button></div>';
+        var htmlContent = '<div style="position: relative;"><button data-type="zoomin">+</button><button data-type="zoomout">-</button></div>';
         $(ptZoomMapModule).append(htmlContent);
     };
 

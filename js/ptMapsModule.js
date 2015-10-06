@@ -10,7 +10,7 @@
 Box.Application.addModule('ptMapsModule', function(context) {
 
 
-	var ptMapsModule, mapsConfig, mapFactory, map;
+	var ptMapsModule, mapsConfig, mapFactory, map, moduleConfig;
     var mapModuleId = "pt-map";
 
 	/*
@@ -27,7 +27,16 @@ Box.Application.addModule('ptMapsModule', function(context) {
         if($(ptMapsModule).children('.mod-content')){
             $(ptMapsModule).children('.mod-content').remove();
         }
-        var htmlContent =  '<div class="mod-content"><div id="'+mapModuleId+'" style="width:98%; height:98%; position:absolute;"></div><div data-module="ptZoomMapModule"></div></div>';
+		var moduleHTML = {
+			'ptZoomMapModule': '<div data-module="ptZoomMapModule"></div>',
+			'ptDrawShapeModule': '<div data-module="ptDrawShapeModule"></div>'
+		}
+
+        var htmlContent =  '<div class="mod-content"><div id="'+mapModuleId+'" style="width:98%; height:98%; position:absolute;"></div>';
+		for(var i=0;i<moduleConfig.modules.length;i++) {
+			htmlContent += moduleHTML[moduleConfig.modules[i]];
+		}
+		htmlContent += '</div>';
         $(ptMapsModule).append(htmlContent);
 
 		Box.Application.startAll(ptMapsModule);
@@ -37,6 +46,10 @@ Box.Application.addModule('ptMapsModule', function(context) {
         var elementId   =  mapModuleId;
         map = mapFactory.initialize(mapsConfig, elementId);
     };
+
+	var startDrawing = function() {
+		//mapFactory.pencilDrawing.init(map, polygonFilter);
+	};
 
 	/**
 	* This function listens to messages from other modules and takes action accordingly.
@@ -64,16 +77,20 @@ Box.Application.addModule('ptMapsModule', function(context) {
 			} else {
 				// ideally zoomout button should be disabled
 			}
+		} else if(name === 'activateDrawing') {
+			// start drawing
+			startDrawing();
 		}
 	};
 
     return {
         behaviors: ['ptMapsBehavior'],
-		messages: ['mapZoomin', 'mapZoomout'],
+		messages: ['mapZoomin', 'mapZoomout', 'activateDrawing'],
 
         init: function() {
             // capture the reference when the module is started
             ptMapsModule = context.getElement();
+			moduleConfig = context.getConfig();
             mapsConfig = context.getService('mapsConfig');
             mapFactory = context.getService('mapFactory');
             addModuleContainer(ptMapsModule);
@@ -87,6 +104,8 @@ Box.Application.addModule('ptMapsModule', function(context) {
                 google.maps.event.clearInstanceListeners(window);
                 google.maps.event.clearInstanceListeners(document);
             }
+			ptMapsModule = null;
+			moduleConfig = null;
         },
 		onmessage: onmessage,
     };

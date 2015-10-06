@@ -5,17 +5,21 @@
 </head>
 <body>
         <div data-module="ptMapsModule">
+            <script type="text/x-config">
+                {"modules":["ptZoomMapModule", "ptDrawShapeModule"]}
+            </script>
         </div>
 
         <script src="js/libs/doT.min.js"></script>
         <script src="js/libs/jquery-1.11.3.min.js"></script>
         <script src="js/libs/t3.min.js"></script>
-        <!--<script src="js/common/ajaxUtils.js"></script>-->
+        <script src="js/common/ajaxUtils.js"></script>
         <script src="js/services/mapsConfig.js"></script>
         <script src="js/services/mapFactory.js"></script>
         <script src="js/ptMapsBehavior.js"></script>
         <script src="js/ptMapsModule.js"></script>
         <script src="js/ptZoomMapModule.js"></script>
+        <script src="js/ptDrawShapeModule.js"></script>
         <script type="text/javascript">
         window.onload = function() {
             Box.Application.init({
