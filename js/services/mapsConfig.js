@@ -9,8 +9,13 @@ Box.Application.addService('mapsConfig', function(application) {
         lng: 79.080617
     };
 
+    ZERO_MILE = {
+      lat: 28.5167536,
+      lng: 77.39813
+    }
+
     mapsConfig.state = {
-        zoom : 10,
+        zoom : 12,
         center: ZERO_MILE,
         minZoom : 9,
         maxZoom : 22,
@@ -75,6 +80,25 @@ Box.Application.addService('mapsConfig', function(application) {
             }
       ]
     }
+
+    mapsConfig.citySvgLatLongHashMap = {
+        'noida': [
+            [28.66347872760795, 77.09346771240234],
+            [28.66347872760795, 77.75127410888672],
+            [28.376297906469308, 77.09346771240234]
+        ],
+        'bangalore': [
+            [13.283387236490535, 76.98394775390625],
+            [13.283387236490535, 78.30024719238281],
+            [12.647038251367576, 76.98394775390625]
+
+        ],
+        'pune': [
+            [18.858858917152634, 73.21014404296875],
+            [18.858858917152634, 74.52713012695312],
+            [18.238481676022758, 73.21014404296875]
+        ]
+    };
 
 
     mapsConfig.masterPlanScaleFactor = {

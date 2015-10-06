@@ -13,7 +13,7 @@ Box.Application.addService('ajaxUtils', function(application) {
 
 	var factory = {};
 
-	factory.ajax = function(url, params, type, async, data) {
+	factory.ajax = function(url, params, type, async, data, isSVG) {
 	    var successCallback = typeof(params.successCallback) === 'function' ? params.successCallback : null;
 	    var errorCallback = typeof(params.errorCallback) === 'function' ? params.errorCallback : null;
 	    var completeCallback = typeof(params.completeCallback) === 'function' ? params.completeCallback : null;
@@ -23,7 +23,13 @@ Box.Application.addService('ajaxUtils', function(application) {
 	        url: url,
 	        async: async,
 	        success: function(response) {
-	            utils.log(response);
+	            
+	            if(isSVG){
+                	var data = new XMLSerializer().serializeToString(response.documentElement);
+                	successCallback(data, params);
+                	return;
+                }
+
 	            if (response.statusCode === '2XX') {
 	                if (successCallback === null) {
 	                    // default successCallback handling
