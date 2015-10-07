@@ -17,7 +17,7 @@ define(['text!views/ptSvgLegendsModule.html'], function(template){
 		var beforeInitialize = function(){
 			scope.state = mapsConfig.state;
 		    scope.masterPlanActive = false;
-		    scope.showSvgLegends = false;
+		    scope.showSvgLegends = true;
 		    scope.toggleSvgLegendOpened = false;
 		    scope.disableMasterPlanButton = false;
 
@@ -40,7 +40,7 @@ define(['text!views/ptSvgLegendsModule.html'], function(template){
 		        'pune': {name: 'Pune', source: 'http://www.punecorporation.org', year:2027},
 		    }
 
-		    scope.citySvgs = {};
+		    scope.citySvgs = {name: 'Noida', source: 'http://www.noidaauthorityonline.com', year:2031};
 
 		    scope.legendsArray = [
 	            {   'name': 'landusage',
@@ -56,7 +56,7 @@ define(['text!views/ptSvgLegendsModule.html'], function(template){
 	                    {'name':'Commercial', 'cls':'comm'},
 	                    {'name':'Village Population', 'cls':'village'}
 	                ],
-	                'visible': false
+	                'visible': true
 	            },
 	            {   'name': 'train',
 	                'id': 'train_legend',
