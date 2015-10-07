@@ -54,7 +54,7 @@ Box.Application.addModule('ptMapsModule', function(context) {
         if($(ptMapsModule).children('.mod-content')){
             $(ptMapsModule).children('.mod-content').remove();
         }
-        var htmlContent =  '<div class="mod-content body_map"><div id="'+mapModuleId+'" style="width:98%; height:98%; position:absolute;"></div><div data-module="ptZoomMapModule"></div></div>';
+        var htmlContent =  '<div class="mod-content body_map"><div id="'+mapModuleId+'" style="width:98%; height:98%; position:absolute;"></div><div data-module="ptZoomMapModule"></div><div data-module="ptMapSvgLegendsModule"></div></div>';
         $(ptMapsModule).append(htmlContent);
 
 		Box.Application.startAll(ptMapsModule);

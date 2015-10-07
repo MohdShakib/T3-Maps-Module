@@ -9,7 +9,8 @@
 
         <script src="js/libs/doT.min.js"></script>
         <script src="js/libs/jquery-1.11.3.min.js"></script>
-        <script src="js/libs/t3.min.js"></script>
+        <script src="js/libs/require.min.js"></script>
+        <script src="js/libs/t3.js"></script>
         <script src="js/common/ajaxUtils.js"></script>
         <script src="js/services/mapsConfig.js"></script>
         <script src="js/services/mapFactory.js"></script>
@@ -19,8 +20,11 @@
         <script src="js/ptZoomMapModule.js"></script>
         <script type="text/javascript">
         window.onload = function() {
-            Box.Application.init({
-              debug: true
+            require(['js/loadFiles'], function(){
+                console.log('loaded');
+                Box.Application.init({
+                  debug: true
+                });
             });
         }
         </script>

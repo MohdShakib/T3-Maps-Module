@@ -1,0 +1,37 @@
+{{? it.showSvgLegends || it.disableMasterPlanButton}}
+<div id="svgLegends" style="position:absolute; bottom:20px; left:50px;">
+	{{? !it.disableMasterPlanButton}}
+	<div  class="svg-legend">
+	   <div class="svg-header">Legend</div>
+	   {{~ it.legendsArray :eachLegend:index1 }}  
+	   		<div class="svg-item" id="{{=eachLegend.id}}"  data-ng-click="eachLegend.modelName = !eachLegend.modelName;specToggle($event,eachLegend.modelName, eachLegend.name)">
+				<label for="{{=eachLegend.labelFor}}">{{=eachLegend.label}}</label>
+				<i class="pull-right pt" class="{{=eachLegend.open ? 'pt-icon-angle-up': 'pt-icon-angle-down'}}"></i> 
+			</div>
+			<div class="svg-sub-item">
+				<ul>
+					{{~ eachLegend.subLegends :subLegend:index }}
+					<li ><span class="{{=subLegend.cls || ''}}"></span><span>{{=subLegend.name}}</span></li>
+					{{~}}
+				</ul>
+			</div>
+	    {{~}}
+	    <div class="paddingT0lrb10">
+	    	<a href="{{=it.citySvgs.source || ''}}" target="_blank">source</a>
+	    </div>
+	</div>
+	{{?}}
+	 
+	{{? it.disableMasterPlanButton }}
+	<button class="btn btn-action-o svg-primary-btn disable-legendbtn"  tooltip="Currently available for Noida, Bangalore and Pune" tooltip-placement="right">
+	 	VIEW MASTER PLAN
+	</button>
+	{{??}}
+	<button class="btn btn-action-o svg-primary-btn" id="svgbtn" data-type="toggleSVgLegend" >
+	 	{{= it.toggleSvgLegendOpened ? 'CLOSE MASTER PLAN' : 'VIEW MASTER PLAN ('+it.citySvgs.year||""+')'}} 
+	 </button>
+	{{?}}
+	<div class="help-tooltip-txt masterplan-help-tooltip">
+	</div>
+</div>
+{{?}}

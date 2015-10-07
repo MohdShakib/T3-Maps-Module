@@ -1326,7 +1326,7 @@ Box.Application = (function() {
 
 }());
 
-	if (typeof define === 'function' && define.amd) {
+	/*if (typeof define === 'function' && define.amd) {
 		// AMD
 		define('t3', [], function() {
 			return Box;
@@ -1334,7 +1334,7 @@ Box.Application = (function() {
 	} else if (typeof module === 'object' && typeof module.exports === 'object') {
 		// CommonJS/npm, we want to export Box instead of assigning to global Window
 		module.exports = Box;
-	} else {
+	} else {*/
 		// Make sure not to override Box namespace
 		window.Box = window.Box || {};
 
@@ -1344,7 +1344,7 @@ Box.Application = (function() {
 				window.Box[key] = Box[key];
 			}
 		}
-	}
+	/*}*/
 
 // Potentially window is not defined yet, so bind to 'this' instead
 }(typeof window !== 'undefined' ? window : this));
