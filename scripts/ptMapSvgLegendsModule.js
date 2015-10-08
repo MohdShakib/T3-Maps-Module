@@ -7,8 +7,8 @@
 
 /** globals: [] */
 
-define(['text!views/ptSvgLegendsModule.html'], function(template){
-	
+define(['text!views/ptSvgLegendsModule.html', 'scripts/services/mapsConfig'], function(template){
+
 	Box.Application.addModule('ptMapSvgLegendsModule', function(context) {
 		var ptMapSvgLegendsModule, mapsConfig;
 		var scope = {};
@@ -291,7 +291,7 @@ define(['text!views/ptSvgLegendsModule.html'], function(template){
 	    };
 
 		return {
-	        behaviors: ['ptMapSvgLegendsBehavior'],
+	        behaviors: [],
 	        init: function() {
 	            // capture the reference when the module is started
 	            ptMapSvgLegendsModule = context.getElement();

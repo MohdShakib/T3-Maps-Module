@@ -1,13 +1,12 @@
 require.config({
   "paths": {
-    "text" : "../js/libs/text"
+    "text" : "../scripts/libs/text"
   },
   "waitSeconds": 500
 });
 
 define([
-  'js/ptMapSvgLegendsModule',
-  'js/ptMapSvgLegendsBehavior'
+  'scripts/ptMapsModule'
 ], function(){
   "use strict";
 });
